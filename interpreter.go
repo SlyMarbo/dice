@@ -30,6 +30,7 @@ const (
 // string.
 type Result struct {
 	Roll   int
+	Dice   []int
 	Min    int
 	Max    int
 	Avg    float64
@@ -161,11 +162,14 @@ func doRoll(roll string, n int) (results *Results, err error) {
 			result.Avg = (float64(num) * (float64(size+1) / 2.0)) + float64(mod)
 
 			result.Roll = mod
+			result.Dice = make([]int, num)
 			for i := 0; i < num; i++ {
-				result.Roll += rand.Intn(size) + 1
+				result.Dice[i] = rand.Intn(size) + 1
+				result.Roll += result.Dice[i]
 			}
 		} else {
 			result.Roll = mod
+			result.Dice = []int{0}
 			result.Min = mod
 			result.Max = mod
 			result.Avg = float64(mod)
