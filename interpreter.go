@@ -55,14 +55,14 @@ func newResults(n int) *Results {
 	return out
 }
 
-// Roll takes a roll string, parses it, and
-// returns the roll result and an error.
+// RollSimple takes a roll string, parses it,
+// and returns the roll result and an error.
 //
 // Some example roll strings follow:
 //		"1d6"
 //		"D100"
 //		"4d7 -18"
-func SimpleRoll(roll string) (int, error) {
+func RollSimple(roll string) (int, error) {
 	results, err := doRoll(roll, 1)
 	if err != nil {
 		return 0, err

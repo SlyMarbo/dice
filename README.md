@@ -11,7 +11,7 @@ import "github.com/SlyMarbo/dice"
 
 func main() {
 	// Perform a single roll and store just the roll.
-	roll, err := dice.SimpleRoll("1d6 +2")
+	roll, err := dice.RollSimple("1d6 +2")
 	
 	// Perform a single roll and store the roll and its statistics.
 	result, err := dice.Roll("1d6 +2")
