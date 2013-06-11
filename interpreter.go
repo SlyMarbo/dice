@@ -1,6 +1,3 @@
-/*
-Package dice is a simple dice-rolling library with automatic collection of roll statistics.
-*/
 package dice
 
 import (
@@ -55,6 +52,24 @@ func newResults(n int) *Results {
 	out := new(Results)
 	out.Rolls = make([]*Result, n)
 	return out
+}
+
+// Roll takes a roll string, parses it, and
+// returns the roll result and an error.
+//
+// Some example roll strings follow:
+//		"1d6"
+//		"D100"
+//		"4d7 -18"
+func SimpleRoll(roll string) (int, error) {
+	results, err := doRoll(roll, 1)
+	if err != nil {
+		return 0, err
+	}
+	if results != nil {
+		return results.Rolls[0].Roll, nil
+	}
+	return 0, nil
 }
 
 // Roll takes a roll string, parses it, and
